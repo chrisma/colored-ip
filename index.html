@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TODO</title>
+  <!-- START Facebook OpenGraph -->
+  <meta property="og:title" content="TODO"/>
+  <meta property="og:site_name" content=""/>
+  <meta property="og:url" content=""/>
+  <meta property="og:description" content=""/>
+  <meta property="og:image" content=""/>
+  <!-- END Facebook OpenGraph -->
+  <!-- START Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@chrisma0">
+  <meta name="twitter:title" content="TODO">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image:src" content="">
+  <!-- END Twitter Card -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="lib/color-convert-0.5.1.min.js"></script>
+  <script src="named_colors.js"></script>
+</head>
+<body>
+  <noscript>
+    <h1>This website requires Javascript to work :(</h1>
+    <div>Don't worry though, there's nothing malicious here, check the source code on <a href="https://github.com/chrisma/TODO">Github</a>.</div><br>
+  </noscript>
+  <div id="ip"></div>
+  <br/>
+  <div id="debug"></div>
+  <div class="a" id="rgb"></div><span id="rgb_rgb"></span>
+  <div class="a" id="rgba"></div><span id="rgba_rgb"></span>
+  <div class="a" id="hsl"></div><span id="hsl_rgb"></span>
+  <div class="a" id="hsla"></div><span id="hsla_rgb"></span>
+  <div class="a" id="hsv"></div><span id="hsv_rgb"></span>
+  <div class="a" id="hwb"></div><span id="hwb_rgb"></span>
+  <div class="a" id="cmyk"></div><span id="cmyk_rgb"></span>
+  <footer>By <a href="https://twitter.com/chrisma0">@chrisma0</a> | Hosted on <a href="https://github.com/chrisma/TODO">Github</a></footer>
+  <script>
+    $(document).ready(function(){
+      $.getJSON("http://api.ipify.org?format=json", function (data) {
+          $("#ip").html("IP: " + data.ip);
+          var octets = data.ip.split('.').map(function(str){return parseInt(str);});
+          percentages = octets.map(function(octet){return Math.round( (octet/255)*1000 ) / 1000;})
+          
+          //RGB
+          var rgb = octets.slice(0,3);
+          var rgbCss = 'rgb(' + rgb.join(',') + ')';
+          $('#rgb').css('background-color', rgbCss);
+          var closestRGB = closestColorName(rgb);
+          $('#rgb_rgb').text(closestRGB.name + ' | ' + closestRGB.distance);
+          
+          //RGBA
+          var alpha = percentages[3];
+          var rgbaCss = 'rgba(' + rgb.join(',') + ',' + alpha + ')';
+          $('#rgba').css('background-color', rgbaCss);
+          $('#rgba_rgb').text(closestRGB.name + ' with ' + alpha*100 + '% transparency.');
+          
+          //HSL
+          //         hue (0-360),        saturation (0-100), lightness (0-100)
+          var hsl = [percentages[0]*360, percentages[1]*100, percentages[2]*100];
+          var hslInrgb = colorConvert.hsl2rgb(hsl).map(Math.round);
+          $('#hsl').css('background-color', 'rgb(' + hslInrgb.join(',') + ')');
+          var closestHSL = closestColorName(hslInrgb);
+          $('#hsl_rgb').text(closestHSL.name + ' | ' + closestHSL.distance);
+          
+          //HSLA
+          $('#hsla').css('background-color', 'rgba(' + hslInrgb.join(',') + ',' + alpha + ')');
+          $('#hsla_rgb').text(closestHSL.name + ' with ' + alpha*100 + '% transparency.');
+
+          //HSV
+          var hsv = hsl //same structure, different semantics: hue, saturation, value
+          hsvInrgb = colorConvert.hsv2rgb(hsv).map(Math.round);
+          $('#hsv').css('background-color', 'rgb(' + hsvInrgb.join(',') + ')');
+          var closestHSV = closestColorName(hsvInrgb);
+          $('#hsv_rgb').text(closestHSV.name + ' | ' + closestHSV.distance);
+          
+          //HWB
+          var hwb = hsl //same structure, different semantics: hue, whiteness, blackness
+          hwbInrgb = colorConvert.hwb2rgb(hsv).map(Math.round);
+          $('#hwb').css('background-color', 'rgb(' + hwbInrgb.join(',') + ')');
+          var closestHWB = closestColorName(hwbInrgb);
+          $('#hwb_rgb').text(closestHWB.name + ' | ' + closestHWB.distance);
+          
+          //CMYK
+          var cmyk = percentages.map(function(p){return p*100;}); //CMYK is 4 values 0-100%
+          cmykInrgb = colorConvert.cmyk2rgb(cmyk).map(Math.round);
+          $('#cmyk').css('background-color', 'rgb(' + cmykInrgb.join(',') + ')');
+          var closestCMYK = closestColorName(cmykInrgb);
+          $('#cmyk_rgb').text(closestCMYK.name + ' | ' + closestCMYK.distance);
+          
+      }).fail(function(){
+          $('#debug').html('fail')
+      });
+    });
+  </script>
+</body>
+</html>
