@@ -28,19 +28,18 @@
     <h1>This website requires Javascript to work :(</h1>
     <div>Don't worry though, there's nothing malicious here, check the source code on <a href="https://github.com/chrisma/colored-ip">Github</a>.</div><br>
   </noscript>
-  <div class="section" id="header"></div>
-  <div class="section" id="rgb"><span id="rgb_rgb"></span></div>
-  <div class="section" id="rgba"><span id="rgba_rgb"></span></div>
-  <div class="section" id="hsl"><span id="hsl_rgb"></span></div>
-  <div class="section" id="hsla"><span id="hsla_rgb"></span></div>
-  <div class="section" id="hsv"><span id="hsv_rgb"></span></div>
-  <div class="section" id="hwb"><span id="hwb_rgb"></span></div>
-  <div class="section" id="cmyk"><span id="cmyk_rgb"></span></div>
-  <footer>By <a href="https://twitter.com/chrisma0">@chrisma0</a> | Hosted on <a href="https://github.com/chrisma/colored-ip">Github</a></footer>
+  <div class="section" id="rgb"><div class="label">RGB</div><span class="color_name" id="rgb_rgb"></span></div>
+  <div class="section" id="rgba"><div class="label">RGBA</div><span class="color_name" id="rgba_rgb"></span></div>
+  <div class="section" id="hsl"><div class="label">HSL</div><span class="color_name" id="hsl_rgb"></span></div>
+  <div class="section" id="hsla"><div class="label">HSLA</div><span class="color_name" id="hsla_rgb"></span></div>
+  <div class="section" id="hsv"><div class="label">HSV</div><span class="color_name" id="hsv_rgb"></span></div>
+  <div class="section" id="hwb"><div class="label">HWB</div><span class="color_name" id="hwb_rgb"></span></div>
+  <div class="section" id="cmyk"><div class="label">CMYK</div><span class="color_name" id="cmyk_rgb"></span></div>
+  <footer>By <a href="https://twitter.com/chrisma0">@chrisma0</a> | Hosted on <a href="https://github.com/chrisma/colored-ip">Github</a> | Your IP is: <span id="ip"></span></footer>
   <script>
     $(document).ready(function(){
       $.getJSON("http://api.ipify.org?format=json", function (data) {
-          $("#header").html("IP: " + data.ip);
+          $("#ip").text(data.ip);
           var octets = data.ip.split('.').map(function(str){return parseInt(str);});
           percentages = octets.map(function(octet){return Math.round( (octet/255)*1000 ) / 1000;})
           
