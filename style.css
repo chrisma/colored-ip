@@ -50,7 +50,20 @@ div.label {
 	text-decoration: underline;
 }
 
-span.details {
+div.details {
 	font-size: 13px;
 	font-weight: normal;
+	float: left;
+	margin-left: 10px;
+}
+
+.label .title {
+	float: left;
+	margin-top: 11px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+td {
+	padding-top: 0px;
 }
