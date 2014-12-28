@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TODO</title>
+  <title>Colored IP</title>
   <!-- START Facebook OpenGraph -->
-  <meta property="og:title" content="TODO"/>
+  <meta property="og:title" content="Colored IP"/>
   <meta property="og:site_name" content=""/>
   <meta property="og:url" content=""/>
   <meta property="og:description" content=""/>
@@ -28,14 +28,48 @@
     <h1>This website requires Javascript to work :(</h1>
     <div>Don't worry though, there's nothing malicious here, check the source code on <a href="https://github.com/chrisma/colored-ip">Github</a>.</div><br>
   </noscript>
-  <div class="section" id="rgb"><div class="label">RGB</div><span class="color_name" id="rgb_rgb"></span></div>
-  <div class="section" id="rgba"><div class="label">RGBA</div><span class="color_name" id="rgba_rgb"></span></div>
-  <div class="section" id="hsl"><div class="label">HSL</div><span class="color_name" id="hsl_rgb"></span></div>
-  <div class="section" id="hsla"><div class="label">HSLA</div><span class="color_name" id="hsla_rgb"></span></div>
-  <div class="section" id="hsv"><div class="label">HSV</div><span class="color_name" id="hsv_rgb"></span></div>
-  <div class="section" id="hwb"><div class="label">HWB</div><span class="color_name" id="hwb_rgb"></span></div>
-  <div class="section" id="cmyk"><div class="label">CMYK</div><span class="color_name" id="cmyk_rgb"></span></div>
-  <footer>By <a href="https://twitter.com/chrisma0">@chrisma0</a> | Hosted on <a href="https://github.com/chrisma/colored-ip">Github</a> | Your IP is: <span id="ip"></span></footer>
+  <div class="section" id="rgb">
+    <div class="label">
+      <a href="http://en.wikipedia.org/wiki/RGB_color_model">RGB</a> <span class="details">(red, green, blue)</span>
+    </div>
+    <span class="color_name" id="rgb_rgb"></span>
+  </div>
+  <div class="section" id="rgba">
+    <div class="label">
+      <a href="http://en.wikipedia.org/wiki/RGBA_color_space">RGBA</a> <span class="details">(red, green, blue, alpha)</span>
+    </div>
+    <span class="color_name" id="rgba_rgb"></span>
+  </div>
+  <div class="section" id="hsl">
+    <div class="label">
+      <a href="http://en.wikipedia.org/wiki/HSL_and_HSV">HSL</a> <span class="details">(hue, saturation, lightness)</span>
+    </div>
+    <span class="color_name" id="hsl_rgb"></span>
+  </div>
+  <div class="section" id="hsla">
+    <div class="label">
+      <a href="http://www.w3.org/wiki/CSS3/Color/HSLA">HSLA</a> <span class="details">(hue, saturation, lightness, alpha)</span>
+    </div>
+    <span class="color_name" id="hsla_rgb"></span>
+  </div>
+  <div class="section" id="hsv">
+    <div class="label">
+      <a href="http://en.wikipedia.org/wiki/HSL_and_HSV">HSV</a> <span class="details">(hue, saturation, value)</span>
+    </div>
+    <span class="color_name" id="hsv_rgb"></span>
+  </div>
+  <div class="section" id="hwb">
+    <div class="label">
+      <a href="http://en.wikipedia.org/wiki/HWB_color_model">HWB</a> <span class="details">(hue, whiteness, blackness)</span>
+    </div><span class="color_name" id="hwb_rgb"></span>
+  </div>
+  <div class="section" id="cmyk">
+    <div class="label">
+      <a href="http://en.wikipedia.org/wiki/CMYK_color_model">CMYK</a> <span class="details">(cyan, magenta, yellow, key)</span>
+    </div>
+    <span class="color_name" id="cmyk_rgb"></span>
+  </div>
+  <footer>By <a href="https://twitter.com/chrisma0">@chrisma0</a> | Hosted on <a href="https://github.com/chrisma/colored-ip">Github</a> | Your IPv4 address is: <span id="ip"></span></footer>
   <script>
     $(document).ready(function(){
       $.getJSON("http://api.ipify.org?format=json", function (data) {
