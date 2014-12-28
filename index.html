@@ -4,17 +4,17 @@
   <title>Colored IP</title>
   <!-- START Facebook OpenGraph -->
   <meta property="og:title" content="Colored IP"/>
-  <meta property="og:site_name" content=""/>
-  <meta property="og:url" content=""/>
-  <meta property="og:description" content=""/>
-  <meta property="og:image" content=""/>
+  <meta property="og:site_name" content="Colored IP"/>
+  <meta property="og:url" content="http://www.coloredip.cf"/>
+  <meta property="og:description" content="Interpret your IP address as a color (in a variety of color models)."/>
+  <meta property="og:image" content="http://coloredip.cf/colored_ip.png"/>
   <!-- END Facebook OpenGraph -->
   <!-- START Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@chrisma0">
-  <meta name="twitter:title" content="TODO">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image:src" content="">
+  <meta name="twitter:title" content="Colored IP">
+  <meta name="twitter:description" content="Interpret your IP address as a color (in a variety of color models).">
+  <meta name="twitter:image:src" content="http://coloredip.cf/colored_ip.png">
   <!-- END Twitter Card -->
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -137,7 +137,6 @@
 
     function getForegroundColor(rgb, alpha){
         var yiq = ((rgb[0]*299)+(rgb[1]*587)+(rgb[2]*114))/1000;
-        console.log(yiq);
         if (yiq >= 128) {
            return 'black'
         }
