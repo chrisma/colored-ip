@@ -1,4 +1,21 @@
-.a {
-    width: 50px;
-    height: 50px;
+* {
+	margin: 0px;
+}
+
+body {
+	font-family: 'OpenSans', sans-serif;
+}
+
+div.section {
+    width: 100%;
+    height: 250px;
+	text-align: center;
+}
+
+div#header {
+	height: 50px;
+}
+span {
+	display: block;
+	padding: 120px;
 }

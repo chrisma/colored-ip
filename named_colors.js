@@ -16,7 +16,7 @@ function closestColorName(rgbArray) {
     }
     if ( distance === 0 ) break;
   }
-  return {name:namedColors[minIndex].name, distance:distance};
+  return {name:namedColors[minIndex].name, distance:min};
 }
 
 var namedColors = [

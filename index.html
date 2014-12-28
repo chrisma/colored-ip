@@ -18,6 +18,7 @@
   <!-- END Twitter Card -->
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="OpenSans.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="lib/color-convert-0.5.1.min.js"></script>
   <script src="named_colors.js"></script>
@@ -27,21 +28,19 @@
     <h1>This website requires Javascript to work :(</h1>
     <div>Don't worry though, there's nothing malicious here, check the source code on <a href="https://github.com/chrisma/colored-ip">Github</a>.</div><br>
   </noscript>
-  <div id="ip"></div>
-  <br/>
-  <div id="debug"></div>
-  <div class="a" id="rgb"></div><span id="rgb_rgb"></span>
-  <div class="a" id="rgba"></div><span id="rgba_rgb"></span>
-  <div class="a" id="hsl"></div><span id="hsl_rgb"></span>
-  <div class="a" id="hsla"></div><span id="hsla_rgb"></span>
-  <div class="a" id="hsv"></div><span id="hsv_rgb"></span>
-  <div class="a" id="hwb"></div><span id="hwb_rgb"></span>
-  <div class="a" id="cmyk"></div><span id="cmyk_rgb"></span>
+  <div class="section" id="header"></div>
+  <div class="section" id="rgb"><span id="rgb_rgb"></span></div>
+  <div class="section" id="rgba"><span id="rgba_rgb"></span></div>
+  <div class="section" id="hsl"><span id="hsl_rgb"></span></div>
+  <div class="section" id="hsla"><span id="hsla_rgb"></span></div>
+  <div class="section" id="hsv"><span id="hsv_rgb"></span></div>
+  <div class="section" id="hwb"><span id="hwb_rgb"></span></div>
+  <div class="section" id="cmyk"><span id="cmyk_rgb"></span></div>
   <footer>By <a href="https://twitter.com/chrisma0">@chrisma0</a> | Hosted on <a href="https://github.com/chrisma/colored-ip">Github</a></footer>
   <script>
     $(document).ready(function(){
       $.getJSON("http://api.ipify.org?format=json", function (data) {
-          $("#ip").html("IP: " + data.ip);
+          $("#header").html("IP: " + data.ip);
           var octets = data.ip.split('.').map(function(str){return parseInt(str);});
           percentages = octets.map(function(octet){return Math.round( (octet/255)*1000 ) / 1000;})
           
