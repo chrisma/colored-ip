@@ -13,7 +13,10 @@ div.section {
 }
 
 div#header {
-	height: 50px;
+	padding: 5px 0px 5px 0px;
+	height: initial;
+	background-color: white;
+	/*border-bottom: 1px solid black;*/
 }
 
 span.color_name {
@@ -66,4 +69,12 @@ div.details {
 
 td {
 	padding-top: 0px;
+}
+
+#ip {
+	font-weight: bold;
+}
+
+#header_below {
+	display: block;
 }
