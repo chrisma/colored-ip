@@ -51,8 +51,8 @@ function render(data) {
   $('#hsl_rgb').text(closestHSL.name);
   $('#hsl_rgb').css('color', getForegroundColor(hslInrgb));
   $('.hue').text(trunc(hsl[0]));
-  $('.saturation').text(hsl[1] + '%');
-  $('.lightness' ).text(hsl[2] + '%');
+  $('.saturation').text(trunc(hsl[1]) + '%');
+  $('.lightness' ).text(trunc(hsl[2]) + '%');
 
   //HSLA
   $('#hsla').css('background-color', 'rgba(' + hslInrgb.join(',') + ',' + alpha + ')');
@@ -83,8 +83,8 @@ function render(data) {
   $('#cmyk_rgb').text(closestCMYK.name);
   $('#cmyk_rgb').css('color', getForegroundColor(cmykInrgb));
   $('.cyan').text(trunc(cmyk[0]) + '%');
-  $('.magenta').text(cmyk[1] + '%');
-  $('.yellow').text(cmyk[2] + '%');
+  $('.magenta').text(trunc(cmyk[1]) + '%');
+  $('.yellow').text(trunc(cmyk[2]) + '%');
   $('.key').text(trunc(cmyk[3]) + '%');
 }
 
