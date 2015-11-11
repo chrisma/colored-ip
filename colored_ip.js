@@ -38,7 +38,7 @@ function render(data) {
   var alpha = percentages[3];
   var rgbaCss = 'rgba(' + rgb.join(',') + ',' + alpha + ')';
   $('#rgba').css('background-color', rgbaCss);
-  $('#rgba_rgb').text(closestRGB.name + ' with ' + alpha*100 + '% transparency.');
+  $('#rgba_rgb').text(closestRGB.name + ' with ' + trunc(alpha*100) + '% transparency.');
   $('#rgba_rgb').css('color', getForegroundColor(rgb, alpha));
   $('.alpha').text(alpha);
 
@@ -56,7 +56,7 @@ function render(data) {
 
   //HSLA
   $('#hsla').css('background-color', 'rgba(' + hslInrgb.join(',') + ',' + alpha + ')');
-  $('#hsla_rgb').text(closestHSL.name + ' with ' + alpha*100 + '% transparency.');
+  $('#hsla_rgb').text(closestHSL.name + ' with ' + trunc(alpha*100) + '% transparency.');
   $('#hsla_rgb').css('color', getForegroundColor(hslInrgb, alpha));
 
   //HSV
@@ -85,7 +85,7 @@ function render(data) {
   $('.cyan').text(trunc(cmyk[0]) + '%');
   $('.magenta').text(cmyk[1] + '%');
   $('.yellow').text(cmyk[2] + '%');
-  $('.key').text(cmyk[3] + '%');
+  $('.key').text(trunc(cmyk[3]) + '%');
 }
 
 function getForegroundColor(rgb, alpha) {
