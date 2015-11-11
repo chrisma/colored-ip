@@ -8,6 +8,7 @@ body {
 
 div.section {
 	width: 100%;
+	min-width: 475px;
 	height: 13.44vh;
 	min-height: 100px;
 	text-align: center;
